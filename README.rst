@@ -12,3 +12,6 @@ process: this saves a build dependency on automake.
    git -C $WORKTREE subtree split -P trunk/ -b base
    rm -rf $WORKTREE
    git merge base
+
+   # To generate the patch
+   git -C ../xkeyboard-config+custom/ diff upstream/master master > src/add_custom.patch

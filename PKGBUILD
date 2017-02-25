@@ -14,6 +14,11 @@ validpgpkeys=('FFB4CCD275AAA422F5F9808E0661D98FC933A145')
 sha256sums=('d1bfc72553c4e3ef1cd6f13eec0488cf940498b612ab8a0b362e7090c94bc134'
             'SKIP')
 
+prepare() {
+  cd ${srcname}-${pkgver}
+  patch -uNp1 -i ../add_custom.patch
+}
+
 build() {
   cd ${srcname}-${pkgver}
   ./configure --prefix=/usr \
