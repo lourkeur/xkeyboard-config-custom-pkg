@@ -78,10 +78,10 @@ index a25ee54..d7787a0 100644
  ! $thinkpads = thinkpad thinkpad60 thinkpadz60
  
 diff --git a/rules/base.xml.in b/rules/base.xml.in
-index 7475389..b2ab638 100644
+index ddd977c..eef0c01 100644
 --- a/rules/base.xml.in
 +++ b/rules/base.xml.in
-@@ -5649,6 +5649,18 @@
+@@ -5656,6 +5656,18 @@
        </configItem>
        <variantList></variantList>
      </layout>
@@ -101,7 +101,7 @@ index 7475389..b2ab638 100644
    <optionList>
      <group allowMultipleSelection="true">
 diff --git a/symbols/Makefile.am b/symbols/Makefile.am
-index d41f4c2..6077fc8 100644
+index 828fb98..cf0e2b6 100644
 --- a/symbols/Makefile.am
 +++ b/symbols/Makefile.am
 @@ -34,6 +34,7 @@ terminate tg \
@@ -114,10 +114,10 @@ index d41f4c2..6077fc8 100644
  
 diff --git a/symbols/custom b/symbols/custom
 new file mode 100644
-index 0000000..72123aa
+index 0000000..45d8ba6
 --- /dev/null
 +++ b/symbols/custom
-@@ -0,0 +1,37 @@
+@@ -0,0 +1,40 @@
 +Xkb_symbols "basic" {
 +
 +    include "us(workman-intl)"
@@ -154,4 +154,7 @@ index 0000000..72123aa
 +    key <AD10> { [ colon,           semicolon ] };
 +    replace key <AB10> { [ Tab    ] };
 +    replace key <DELE> { [ Escape ] };
++
++    // Workman makes Caps Lock BackSpace.  This undoes it.
++    replace key <CAPS> { [ Caps_Lock ] };
 +};
