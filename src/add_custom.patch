@@ -1,68 +1,24 @@
-diff --git a/README b/README
-deleted file mode 100644
-index 2564025..0000000
---- a/README
-+++ /dev/null
-@@ -1,46 +0,0 @@
--X Keyboard Extension
----------------------
--
--The X Keyboard (XKB) Extension essentially replaces the core protocol
--definition of a keyboard. The extension makes it possible to specify
--clearly and explicitly most aspects of keyboard behaviour on a per-key
--basis, and to track more closely the logical and physical state of a
--keyboard. It also includes a number of keyboard controls designed to
--make keyboards more accessible to people with physical impairments.
--
--There are five components that define a complete keyboard mapping:
--symbols, geometry, keycodes, compat, and types; these five components
--can be combined together using the 'rules' component of the database
--provided by this project, xkeyboard-config.
--
--The complete specification for the XKB Extension can be found here:
--
--  http://xfree86.org/current/XKBproto.pdf
--
--xkeyboard-config
------------------
--
--This project provides a consistent, well-structured, frequently
--released, open source database of keyboard configuration data. The
--project is targeted to XKB-based systems.
--
--For XKB configuration information, see:
--
--  docs/README.config
--
--For information on how to enhance the database itself, see:
--
--  docs/README.enhancing
--
--For information on how to replace an older XKB configuration database
--with the one provided by this project, see:
--
--  docs/HOWTO.transition
--
--For guidelines to making contributions to this project, see:
--
--  http://www.freedesktop.org/wiki/Software/XKeyboardConfig/Rules
--
--To submit bug reports (and patches), please use the bugzilla system:
--
--  https://bugs.freedesktop.org/enter_bug.cgi?product=xkeyboard-config
 diff --git a/README.rst b/README.rst
 new file mode 100644
-index 0000000..4467434
+index 0000000..c3feed1
 --- /dev/null
 +++ b/README.rst
-@@ -0,0 +1,7 @@
+@@ -0,0 +1,11 @@
 +This is `xkeyboard-config from FreeDesktop.org`_, with the addition of my own
 +custom keyboard layout based on Workman and Programmer Dvorak for use with my
 +TEK-227_.  It expects the keyboard to have its builtin “ISO SE,ES,IT” mapping
-+enabled.
++enabled. The only differences with the original distribution are two additional
++files: the `keyboard layout description`_ and this README. The `original README`_
++can be found besides this one.
 +
 +.. _xkeyboard-config from FreeDesktop.org: https://www.freedesktop.org/wiki/Software/XKeyboardConfig
 +.. _TEK-227: https://trulyergonomic.com/store/truly-ergonomic-mechanical-ergonomic-keyboard
++.. _keyboard layout description: symbols/custom
++.. _original README: original-readme.txt
+diff --git a/README b/original-readme.txt
+similarity index 100%
+rename from README
+rename to original-readme.txt
 diff --git a/rules/base.lists.part b/rules/base.lists.part
 index a25ee54..d7787a0 100644
 --- a/rules/base.lists.part
@@ -114,47 +70,41 @@ index 828fb98..cf0e2b6 100644
  
 diff --git a/symbols/custom b/symbols/custom
 new file mode 100644
-index 0000000..45d8ba6
+index 0000000..56ed1d3
 --- /dev/null
 +++ b/symbols/custom
-@@ -0,0 +1,40 @@
+@@ -0,0 +1,34 @@
 +Xkb_symbols "basic" {
 +
-+    include "us(workman-intl)"
++    include "us(workman)"
 +    name[Group1] = "Programming (Personal)";
 +
-+    //             Unmodified       Shift           AltGr            Shift+AltGr
-+    // symbols row, left side
-+    key <TLDE> { [ asciitilde,      dollar,         dead_tilde                  ] };
-+    key <AE11> { [ percent,         ampersand                                   ] };
-+    key <AE02> { [ bracketleft,     2,              currency                    ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
-+    key <AE03> { [ braceleft,       3,              cent                        ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
-+    key <AE04> { [ braceright,      4,              yen                         ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
-+    key <AE05> { [ parenleft,       5,              EuroSign                    ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
-+    key <AE06> { [ equal,           6,              sterling                    ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
++    // symbols keys, loosely based on programmer dvorak.
++    // Caps Lock can be used to type strings of digits.
++    key <LSGT> { [ numbersign,      grave       ] };
++    key <AE11> { [ percent,         ampersand   ] };
++    key <TLDE> { [ asciitilde,      dollar      ] };
++    key <AE01> { [ exclam,          1           ] };
++    key <AE02> { [ bracketleft,     2           ] };
++    key <AE03> { [ braceleft,       3           ] };
++    key <AE04> { [ braceright,      4           ] };
++    key <AE05> { [ parenleft,       5           ] };
++    key <AE06> { [ equal,           6           ] };
++    key <AE07> { [ asterisk,        7           ] };
++    key <AE08> { [ parenright,      8           ] };
++    key <AE09> { [ plus,            9           ] };
++    key <AE10> { [ bracketright,    0           ] };
++    key <AE12> { [ minus,           underscore  ] };
++    key <BKSL> { [ backslash,       bar         ] };
++    key <AD11> { [ slash,           question    ] };
++    key <AD12> { [ at,              asciicircum ] };
++    key <AD10> { [ colon,           semicolon   ] };
++    key <AC11> { [ quotedbl,        apostrophe  ] };
 +
-+    // symbols row, right side
-+    key <AE07> { [ asterisk,        7                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
-+    key <AE08> { [ parenright,      8,              onehalf                     ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
-+    key <AE09> { [ plus,            9                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
-+    key <AE10> { [ bracketright,    0                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
-+    key <AE01> { [ exclam,          1,              exclamdown,      U2E18      ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };  // reversed interrobang
-+    key <LSGT> { [ numbersign,      grave,          dead_grave                  ] };
-+    key <BKSP> { [ BackSpace,       BackSpace                                   ] };
-+
-+    // upper row, left side
-+    key <AE12> { [ minus,           underscore,     hyphen,          endash     ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
-+    key <AD11> { [ slash,           question,       questiondown,    U203D      ] };  // interrobang
-+    key <AD12> { [ at,              asciicircum,    dead_circumflex, dead_caron ] };
-+
-+    key <BKSL> { [ backslash,       bar                                         ] };
-+
-+    // lower row, left side
-+    key <AC11> { [ quotedbl,        apostrophe,     dead_acute                  ] };
-+    key <AD10> { [ colon,           semicolon ] };
++    // putting the central keys on the TeK to good use
 +    replace key <AB10> { [ Tab    ] };
 +    replace key <DELE> { [ Escape ] };
 +
-+    // Workman makes Caps Lock BackSpace.  This undoes it.
++    // Workman turns Caps Lock into backspace, undo
 +    replace key <CAPS> { [ Caps_Lock ] };
 +};
