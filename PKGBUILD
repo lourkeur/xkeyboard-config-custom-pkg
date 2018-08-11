@@ -1,7 +1,7 @@
 srcname=xkeyboard-config
 pkgname="${srcname}+custom"
-pkgver=2.21
-pkgrel=2
+pkgver=2.24
+pkgrel=1
 pkgdesc="X keyboard configuration files with custom layout added"
 arch=(any)
 license=('custom')
@@ -9,19 +9,15 @@ url="https://www.freedesktop.org/wiki/Software/XKeyboardConfig"
 makedepends=('intltool' 'xorg-xkbcomp' 'libxslt' 'xorg-util-macros')
 provides=("${srcname}")
 conflicts=("${srcname}")
-source=(https://xorg.freedesktop.org/archive/individual/data/${srcname}/${srcname}-${pkgver}.tar.bz2{,.sig}
-       fix_typo.diff::https://cgit.freedesktop.org/xkeyboard-config/patch/?id=b3fb72308942f705e3e8e17765e4097773ed5483)
+source=(https://xorg.freedesktop.org/archive/individual/data/${srcname}/${srcname}-${pkgver}.tar.bz2{,.sig})
 validpgpkeys=('FFB4CCD275AAA422F5F9808E0661D98FC933A145')
 validpgpkeys+=('15CFA5C595041D2CCBEA155F1732AA424A0E86B4') # "Sergey Udaltsov (For GNOME-related tasks) <svu@gnome.org>"
-sha256sums=('30c17049fae129fc14875656da9aa3099e3031d6ce0ee1d77aae190fd9edcec5'
-            'SKIP'
+sha512sums=('96b65d18a85443a9bf93d65a4423da6e2b3d44882dae6a03bf46768a92017e9762cf3721361ba399c2873d53782944d0292eb673484f1cd8a8bdbf643e7a1dc0'
             'SKIP')
 
 prepare() {
   cd ${srcname}-${pkgver}
   patch -uNp1 -i ../add_custom.patch
-  # https://bugs.archlinux.org/task/54584
-  patch -Np1 -i ../fix_typo.diff
 }
 
 build() {
