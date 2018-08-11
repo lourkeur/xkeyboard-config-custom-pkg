@@ -34,12 +34,12 @@ index a25ee54..d7787a0 100644
  ! $thinkpads = thinkpad thinkpad60 thinkpadz60
  
 diff --git a/rules/base.xml.in b/rules/base.xml.in
-index ddd977c..eef0c01 100644
+index 3608b60..b3b4cf4 100644
 --- a/rules/base.xml.in
 +++ b/rules/base.xml.in
-@@ -5656,6 +5656,18 @@
-       </configItem>
-       <variantList></variantList>
+@@ -6082,6 +6082,18 @@
+        </variant>
+       </variantList>
      </layout>
 +    <layout>
 +      <configItem>
@@ -57,11 +57,11 @@ index ddd977c..eef0c01 100644
    <optionList>
      <group allowMultipleSelection="true">
 diff --git a/symbols/Makefile.am b/symbols/Makefile.am
-index 828fb98..cf0e2b6 100644
+index 9ba1c4a..ebe3c2f 100644
 --- a/symbols/Makefile.am
 +++ b/symbols/Makefile.am
 @@ -34,6 +34,7 @@ terminate tg \
- tj tm tr tw tz \
+ tj tm tr trans tw tz \
  ua us uz vn \
  za \
 +custom \
@@ -70,10 +70,10 @@ index 828fb98..cf0e2b6 100644
  
 diff --git a/symbols/custom b/symbols/custom
 new file mode 100644
-index 0000000..56ed1d3
+index 0000000..2e1caac
 --- /dev/null
 +++ b/symbols/custom
-@@ -0,0 +1,34 @@
+@@ -0,0 +1,38 @@
 +Xkb_symbols "basic" {
 +
 +    include "us(workman)"
@@ -84,16 +84,16 @@ index 0000000..56ed1d3
 +    key <LSGT> { [ numbersign,      grave       ] };
 +    key <AE11> { [ percent,         ampersand   ] };
 +    key <TLDE> { [ asciitilde,      dollar      ] };
-+    key <AE01> { [ exclam,          1           ] };
-+    key <AE02> { [ bracketleft,     2           ] };
-+    key <AE03> { [ braceleft,       3           ] };
-+    key <AE04> { [ braceright,      4           ] };
-+    key <AE05> { [ parenleft,       5           ] };
-+    key <AE06> { [ equal,           6           ] };
-+    key <AE07> { [ asterisk,        7           ] };
-+    key <AE08> { [ parenright,      8           ] };
-+    key <AE09> { [ plus,            9           ] };
-+    key <AE10> { [ bracketright,    0           ] };
++    key <AE01> { [ exclam,          1           ], type[Group1] = "ALPHABETIC" };
++    key <AE02> { [ bracketleft,     2           ], type[Group1] = "ALPHABETIC" };
++    key <AE03> { [ braceleft,       3           ], type[Group1] = "ALPHABETIC" };
++    key <AE04> { [ braceright,      4           ], type[Group1] = "ALPHABETIC" };
++    key <AE05> { [ parenleft,       5           ], type[Group1] = "ALPHABETIC" };
++    key <AE06> { [ equal,           6           ], type[Group1] = "ALPHABETIC" };
++    key <AE07> { [ asterisk,        7           ], type[Group1] = "ALPHABETIC" };
++    key <AE08> { [ parenright,      8           ], type[Group1] = "ALPHABETIC" };
++    key <AE09> { [ plus,            9           ], type[Group1] = "ALPHABETIC" };
++    key <AE10> { [ bracketright,    0           ], type[Group1] = "ALPHABETIC" };
 +    key <AE12> { [ minus,           underscore  ] };
 +    key <BKSL> { [ backslash,       bar         ] };
 +    key <AD11> { [ slash,           question    ] };
@@ -107,4 +107,8 @@ index 0000000..56ed1d3
 +
 +    // Workman turns Caps Lock into backspace, undo
 +    replace key <CAPS> { [ Caps_Lock ] };
++
++    // make both alt keys Alt
++    // I manage accented characters another way
++    include "level3(ralt_alt)"
 +};
