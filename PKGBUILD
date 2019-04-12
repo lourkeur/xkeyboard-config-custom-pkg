@@ -33,8 +33,8 @@ build() {
       --enable-compat-rules=yes
   make
  }
- 
- package() { 
+
+package() {
   cd ${srcname}-${pkgver}
 
   make DESTDIR="${pkgdir}" install
