@@ -1,10 +1,17 @@
+===============================
+``xkeyboard-config+custom.pkg``
+===============================
+
 Arch Linux package for `xkeyboard-config+custom`_.
+
+.. _xkeyboard-config+custom: ../xkeyboard-config]custom
 
 A patch is generated based on the fork and then applied on top of the normal
 xkeyboard-config release, rather than cloning the fork as part of the build
 process: this saves a build dependency on automake.
 
 .. code:: sh
+
    # To pull in changes in the Arch Linux PKGBUILD mainline
    WORKTREE=$(mktemp -d split-trunk-XXXX)
    git fetch https://git.archlinux.org/svntogit/packages.git packages/xkeyboard-config
