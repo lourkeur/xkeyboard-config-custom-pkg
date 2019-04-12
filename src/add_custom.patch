@@ -34,10 +34,10 @@ index a25ee54..d7787a0 100644
  ! $thinkpads = thinkpad thinkpad60 thinkpadz60
  
 diff --git a/rules/base.xml.in b/rules/base.xml.in
-index 3608b60..b3b4cf4 100644
+index 3fa1bfc..79f8cd6 100644
 --- a/rules/base.xml.in
 +++ b/rules/base.xml.in
-@@ -6082,6 +6082,18 @@
+@@ -6194,6 +6194,18 @@
         </variant>
        </variantList>
      </layout>
